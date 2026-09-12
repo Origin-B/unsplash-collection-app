@@ -1,0 +1,48 @@
+// hooks
+import { useMemo, useState } from "react";
+import { useSearchResults } from "../../context/SearchResultsProvider";
+import { useParams } from "react-router-dom";
+
+// component
+import Details from "../image-details/Details";
+import AddImageOverlay from "../image-details/AddImageOverlay";
+import { ImageSkeletonItem } from "../shared/Skeleton";
+
+export default function ImageDetails() {
+  const { id } = useParams();
+  const { searchResults } = useSearchResults();
+
+  const [active, setActive] = useState(false);
+
+  const activeImg = useMemo(
+    () => searchResults.find((img) => img.id === id),
+    [id, searchResults],
+  );
+
+  return (
+    <main className="container mb-8 flex flex-col flex-wrap gap-8 self-center sm:flex-row md:h-200">
+      <div className="h-full rounded-md p-4 sm:w-[calc(50%-16px)]">
+        {activeImg ? (
+          <img
+            srcSet={`${activeImg.urls.thumb} 200w, ${activeImg.urls.full} 400w`}
+            sizes="(max-width: 639px) 90vw, (max-width: 767px) 40vw"
+            src={activeImg.urls.thumb}
+            alt={activeImg.alt_description}
+            className="mx-auto h-full rounded-md"
+          />
+        ) : (
+          <ImageSkeletonItem height="100%" />
+        )}
+      </div>
+      {activeImg && <Details actImg={activeImg} setActive={setActive} />}
+
+      {activeImg && (
+        <AddImageOverlay
+          active={active}
+          setActive={setActive}
+          actImg={activeImg}
+        />
+      )}
+    </main>
+  );
+}

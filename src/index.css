@@ -1,4 +1,70 @@
 @import "tailwindcss";
 
 @theme {
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-active-link-bg: var(--active-link-bg);
+  --color-main-bg: var(--main-bg);
+  --color-overlay-bg: var(--overlay-bg);
+  --font-Be-Vietnam-Pro: "Be Vietnam Pro", sans-serif;
+  --animate-fadeIn: fadeIn 0.5s ease-out;
+}
+
+:root,
+.light {
+  --text: #121826;
+  --text-muted: #6c727f;
+  --active-link-bg: #e5e7eb;
+  --main-bg: #ffffff;
+  --overlay-bg: #12182620;
+}
+
+.dark {
+  --text: #ffffff;
+  --text-muted: #e5e7eb;
+  --active-link-bg: #e5e7ebcc;
+  --main-bg: #121826;
+  --overlay-bg: #ffffff20;
+}
+
+button {
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+@utility main-style {
+  @apply flex flex-1 flex-col items-center gap-8 *:w-full;
+}
+
+@utility icon-btn {
+  @apply flex items-center justify-center gap-2;
+}
+
+@utility text-btn {
+  @apply hover:outline-text hover:text-text rounded-md hover:outline-2;
+}
+
+@utility bg-btn {
+  @apply bg-active-link-bg hover:bg-active-link-bg/50 rounded-md;
+}
+
+@utility input-container {
+  @apply outline-text-muted has-focus:outline-text flex w-full items-center gap-4 rounded-md px-3 py-2 outline transition-colors focus:border;
+}
+
+@utility input {
+  @apply w-full font-light focus:outline-none;
+}
+
+@utility input-icon {
+  @apply stroke-text-muted size-5 transition-colors;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
