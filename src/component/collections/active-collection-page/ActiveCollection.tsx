@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import HeadingArticle from "../shared/HeadingArticle";
+import HeadingArticle from "../../shared/HeadingArticle";
 import { useMemo } from "react";
-import { useCollections } from "../../context/CollectionsProvider";
-import ImageGrid from "../shared/ImagesGrid";
+import { useCollections } from "../../../context/CollectionsProvider";
+import ImageGrid from "../../shared/ImagesGrid";
 
 export default function ActiveCollection() {
   const { collections } = useCollections();

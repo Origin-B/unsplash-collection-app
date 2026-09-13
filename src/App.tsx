@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router";
 // component
 import Header from "./component/header/Header";
 import Layout from "./component/Layout/Layout";
-import MainHome from "./component/Layout/MainHome";
-import SearchResults from "./component/Layout/SearchResults";
-import ImageDetails from "./component/Layout/ImageDetails";
-import Collections from "./component/Layout/Collections";
-import ActiveCollection from "./component/Layout/ActiveCollection";
+import MainHome from "./component/home/MainHome";
+import SearchResults from "./component/home/SearchResults";
+import ImgDetails from "./component/img-details/ImgDetails";
+import Collections from "./component/collections/main-page/Collections";
+import ActiveCollection from "./component/collections/active-collection-page/ActiveCollection";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainHome />} />
           <Route path="search" element={<SearchResults />} />
-          <Route path="photos/:id" element={<ImageDetails />} />
+          <Route path="photos/:id" element={<ImgDetails />} />
 
           <Route path="/collection">
             <Route index element={<Collections />} />

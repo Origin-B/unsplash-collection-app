@@ -12,7 +12,7 @@ export default function InputContainer({
   setInput: (n: string) => void;
 }) {
   return (
-    <form className="group input-container">
+    <div className="group input-container">
       <input
         type="text"
         className="input"
@@ -22,6 +22,6 @@ export default function InputContainer({
         onChange={(e) => setInput(e.target.value)}
       />
       {children}
-    </form>
+    </div>
   );
 }

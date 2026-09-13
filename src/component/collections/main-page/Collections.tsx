@@ -1,16 +1,16 @@
 // component
-import HeadingArticle from "../shared/HeadingArticle";
-import CollectionCard from "../collections/CollectionCard";
-import AddCollectionOverlay from "../collections/AddCollectionOverlay";
-import ActionBtn from "../shared/ActionBtn";
+import HeadingArticle from "../../shared/HeadingArticle";
+import CollectionCard from "./CollectionCard";
+import AddCollectionOverlay from "./AddCollectionOverlay";
+import ActionBtn from "../../shared/ActionBtn";
 import { Link } from "react-router-dom";
 
 // hooks
 import { useState } from "react";
-import { useCollections } from "../../context/CollectionsProvider";
+import { useCollections } from "../../../context/CollectionsProvider";
 
 // icon
-import { Plus } from "../../icons/Icons";
+import { Plus } from "../../../icons/Icons";
 
 export default function Collections() {
   const [active, setActive] = useState(false);

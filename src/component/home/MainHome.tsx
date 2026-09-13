@@ -1,7 +1,7 @@
 // component
 import Heading from "../shared/Heading";
-import BGDev from "../home/BGDev";
-import Searchbar from "../shared/Searchbar";
+import BGDev from "./BGDev";
+import Searchbar from "./Searchbar";
 
 export default function MainHome() {
   return (

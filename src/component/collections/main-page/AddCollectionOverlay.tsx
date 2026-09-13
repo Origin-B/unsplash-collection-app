@@ -2,14 +2,14 @@ import { nanoid } from "nanoid";
 
 // hooks
 import { useState } from "react";
-import { useCollections } from "../../context/CollectionsProvider";
+import { useCollections } from "../../../context/CollectionsProvider";
 
 // component
-import Overlay from "../shared/Overlay";
+import Overlay from "../../shared/Overlay";
 
 // icon
-import { CollectionIcon } from "../../icons/Icons";
-import InputContainer from "../shared/InputContainer";
+import { CollectionIcon } from "../../../icons/Icons";
+import InputContainer from "../../shared/InputContainer";
 
 export default function AddCollectionOverlay({
   active,

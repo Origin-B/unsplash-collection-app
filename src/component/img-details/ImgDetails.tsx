@@ -4,11 +4,10 @@ import { useSearchResults } from "../../context/SearchResultsProvider";
 import { useParams } from "react-router-dom";
 
 // component
-import Details from "../image-details/Details";
-import AddImageOverlay from "../image-details/AddImageOverlay";
-import { ImageSkeletonItem } from "../shared/Skeleton";
+import Details from "./Details";
+import AddImageOverlay from "./AddImageOverlay";
 
-export default function ImageDetails() {
+export default function ImgDetails() {
   const { id } = useParams();
   const { searchResults } = useSearchResults();
 
@@ -19,10 +18,10 @@ export default function ImageDetails() {
     [id, searchResults],
   );
 
-  return (
-    <main className="container mb-8 flex flex-col flex-wrap gap-8 self-center sm:flex-row md:h-200">
-      <div className="h-full rounded-md p-4 sm:w-[calc(50%-16px)]">
-        {activeImg ? (
+  if (activeImg)
+    return (
+      <main className="container mb-8 flex flex-col flex-wrap gap-8 self-center sm:flex-row md:h-200">
+        <div className="h-full rounded-md p-4 sm:w-[calc(50%-16px)]">
           <img
             srcSet={`${activeImg.urls.thumb} 200w, ${activeImg.urls.full} 400w`}
             sizes="(max-width: 639px) 90vw, (max-width: 767px) 40vw"
@@ -30,19 +29,16 @@ export default function ImageDetails() {
             alt={activeImg.alt_description}
             className="mx-auto h-full rounded-md"
           />
-        ) : (
-          <ImageSkeletonItem height="100%" />
-        )}
-      </div>
-      {activeImg && <Details actImg={activeImg} setActive={setActive} />}
+        </div>
 
-      {activeImg && (
+        <Details actImg={activeImg} setActive={setActive} />
+
         <AddImageOverlay
           active={active}
           setActive={setActive}
           actImg={activeImg}
         />
-      )}
-    </main>
-  );
+      </main>
+    );
+  return <></>;
 }

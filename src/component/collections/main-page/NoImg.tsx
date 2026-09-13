@@ -1,4 +1,4 @@
-import { Img } from "../../icons/Icons";
+import { Img } from "../../../icons/Icons";
 
 export default function NoImg() {
   return (

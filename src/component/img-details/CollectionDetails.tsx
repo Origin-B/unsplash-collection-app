@@ -22,7 +22,7 @@ export default function CollectionDetails({
 
   const { setCollections, collections } = useCollections();
 
-  function handelAddRemoveImg(action: "add" | "remove", id: string): void {
+  function handleAddRemoveImg(action: "add" | "remove", id: string): void {
     if (actImg && action === "add") {
       setCollections(
         collections.map((c) =>
@@ -78,7 +78,7 @@ export default function CollectionDetails({
 
       {action === "add" ? (
         <ActionBtn
-          onClick={() => handelAddRemoveImg("add", collection.id)}
+          onClick={() => handleAddRemoveImg("add", collection.id)}
           className={
             "icon-btn stroke-text-muted hover:stroke-text p-2 text-xs opacity-0 group-hover:opacity-100 sm:text-sm"
           }
@@ -88,14 +88,14 @@ export default function CollectionDetails({
         </ActionBtn>
       ) : action === "remove" ? (
         <ActionBtn
-          onClick={() => handelAddRemoveImg("remove", collection.id)}
+          onClick={() => handleAddRemoveImg("remove", collection.id)}
           ariaLabel="click to remove to collection"
           className="icon-btn stroke-text-muted hover:stroke-text p-2 text-sm opacity-0 group-hover:opacity-100"
         >
           <Minus className="size-4" /> Remove
         </ActionBtn>
       ) : (
-        ""
+        <></>
       )}
     </div>
   );

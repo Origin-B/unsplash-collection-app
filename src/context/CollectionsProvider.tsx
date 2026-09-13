@@ -3,8 +3,8 @@ import {
   useState,
   createContext,
   useContext,
-  type ReactNode,
   useEffect,
+  type ReactNode,
 } from "react";
 
 // type
@@ -25,15 +25,16 @@ export default function CollectionsProvider({
 }) {
   const [collections, setCollections] = useState<Collection[]>(() => {
     try {
-      const save = sessionStorage.getItem("collections");
+      const save = localStorage.getItem("collections");
       return save ? JSON.parse(save) : [];
     } catch (error) {
+      console.error(error);
       return [];
     }
   });
 
   useEffect(() => {
-    sessionStorage.setItem("collections", JSON.stringify(collections));
+    localStorage.setItem("collections", JSON.stringify(collections));
   }, [collections]);
 
   return (

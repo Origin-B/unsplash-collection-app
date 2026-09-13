@@ -34,7 +34,7 @@ export default function AddImageOverlay({
       .filter((c) =>
         c.images.length === 0
           ? true
-          : c.images.some((img) => img.id !== actImg.id),
+          : c.images.every((img) => img.id !== actImg.id),
       );
   }, [collections, collectionN, actImg]);
 

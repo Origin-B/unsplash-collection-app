@@ -10,7 +10,7 @@ import { Link, NavLink } from "react-router";
 import NavbarBtn from "./NavbarBtn";
 import Overlay from "../shared/Overlay";
 import ActionBtn from "../shared/ActionBtn";
-import CollectionDetails from "../image-details/CollectionDetails";
+import CollectionDetails from "../img-details/CollectionDetails";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
@@ -82,7 +82,7 @@ export default function Navbar() {
 
         <ActionBtn
           ariaLabel="click tp change the mode"
-          className="icon-btn outline-text-muted p-2 text-sm font-medium"
+          className="icon-btn text-btn outline-text-muted p-2 text-sm font-medium"
           onClick={() => setMode(!mode)}
         >
           {mode ? (

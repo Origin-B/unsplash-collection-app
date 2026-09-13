@@ -1,8 +1,8 @@
 // type
-import { type CollectionImg } from "../../data-type";
+import { type CollectionImg } from "../../../data-type";
 
 // icons
-import { Img } from "../../icons/Icons";
+import { Img } from "../../../icons/Icons";
 
 export default function Images({
   collectionImgs,

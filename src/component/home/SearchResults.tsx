@@ -3,7 +3,7 @@ import { useSearchResults } from "../../context/SearchResultsProvider";
 import ImageGrid from "../shared/ImagesGrid";
 
 // component
-import Searchbar from "../shared/Searchbar";
+import Searchbar from "./Searchbar";
 
 export default function SearchResults() {
   const { searchResults } = useSearchResults();

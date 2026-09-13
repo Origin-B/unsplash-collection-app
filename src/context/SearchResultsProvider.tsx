@@ -31,9 +31,10 @@ export default function SearchResultsProvider({
 }) {
   const [searchResults, setSearchResults] = useState<UnsplashImage[]>(() => {
     try {
-      const save = localStorage.getItem("searchResults");
+      const save = sessionStorage.getItem("searchResults");
       return save ? JSON.parse(save) : [];
     } catch (error) {
+      console.error(error);
       return [];
     }
   });
@@ -45,11 +46,8 @@ export default function SearchResultsProvider({
 
   useEffect(() => {
     sessionStorage.setItem("searchTerm", searchTerm);
+    sessionStorage.setItem("searchResults", JSON.stringify(searchResults));
   }, [searchTerm, searchResults]);
-
-  useEffect(() => {
-    fetchPhotos(searchTerm);
-  }, []);
 
   const fetchPhotos = async (query: string) => {
     try {

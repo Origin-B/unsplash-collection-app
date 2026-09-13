@@ -1,6 +1,6 @@
 // component
-import type { Collection } from "../../data-type";
-import Images from "./Images";
+import type { Collection } from "../../../data-type";
+import Images from "../active-collection-page/Images";
 import NoImg from "./NoImg";
 
 export default function CollectionCard({
