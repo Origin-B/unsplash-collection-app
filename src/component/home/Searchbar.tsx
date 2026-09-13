@@ -14,7 +14,7 @@ export default function Searchbar({ className }: { className: string }) {
   const navigate = useNavigate();
   const handleSearch = (e: ChangeEvent) => {
     e.preventDefault();
-    if (!searchTerm.trim()) return;
+    if (!searchTerm.toLocaleLowerCase().trim()) return;
     fetchPhotos(searchTerm);
 
     navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
