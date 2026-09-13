@@ -8,9 +8,10 @@ import { Hamburger, Moon, Sun, XIcon } from "../../icons/Icons";
 // components
 import { Link, NavLink } from "react-router";
 import NavbarBtn from "./NavbarBtn";
-import Overlay from "../shared/Overlay";
 import ActionBtn from "../shared/ActionBtn";
 import CollectionDetails from "../img-details/CollectionDetails";
+import NoCollection from "../shared/NoCollection";
+import Overlay from "../shared/Overlay";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
@@ -43,7 +44,7 @@ export default function Navbar() {
           </NavbarBtn>
         </div>
 
-        <div className="flex flex-col gap-2 text-center *:p-[8px_16px] *:font-medium *:transition-colors md:flex-row md:items-center">
+        <div className="flex flex-col gap-3 text-center *:p-[8px_16px] *:font-medium *:transition-colors md:flex-row md:items-center">
           <NavLink
             to={"/"}
             aria-label="click to go home page"
@@ -68,16 +69,27 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-        <div className="flex-1 md:hidden">
-          <h3>Collections</h3>
+        <div className="flex flex-1 flex-col gap-3 md:hidden">
+          <h3 className="text-text font-medium">Collections:</h3>
 
-          <div className="scrollbar-thumb-text-muted max-h-60 flex-col gap-2 overflow-y-auto">
-            {collections.map((c) => (
-              <Link to={`/collection/${c.id}`} key={c.id}>
-                <CollectionDetails collection={c} action="hidden" />
-              </Link>
-            ))}
-          </div>
+          {collections.length === 0 ? (
+            <NoCollection
+              className={{
+                container: "flex-1 text-sm font-medium",
+                icon: "size-5",
+              }}
+              title="collection"
+              icon="collection"
+            />
+          ) : (
+            <div className="scrollbar-thumb-text-muted flex max-h-60 flex-col gap-3 overflow-y-auto">
+              {collections.map((c) => (
+                <Link to={`/collection/${c.id}`} key={c.id}>
+                  <CollectionDetails collection={c} action="hidden" />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <ActionBtn

@@ -72,9 +72,6 @@ export default function SearchResultsProvider({
     }
   };
 
-  console.log(searchResults.map((s) => s.user.profile_image));
-  console.log(searchResults.map((s) => s.user.portfolio_url));
-
   return (
     <searchResultsContext.Provider
       value={{ searchResults, setSearchTerm, fetchPhotos, searchTerm }}

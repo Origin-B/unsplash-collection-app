@@ -1,8 +1,12 @@
-import { useParams } from "react-router-dom";
+// component
 import HeadingArticle from "../../shared/HeadingArticle";
+import ImageGrid from "../../shared/ImagesGrid";
+import NoCollection from "../../shared/NoCollection";
+
+// hooks
+import { useParams } from "react-router-dom";
 import { useMemo } from "react";
 import { useCollections } from "../../../context/CollectionsProvider";
-import ImageGrid from "../../shared/ImagesGrid";
 
 export default function ActiveCollection() {
   const { collections } = useCollections();
@@ -20,7 +24,18 @@ export default function ActiveCollection() {
           p={`${activeCollection.images.length} photos`}
         />
 
-        <ImageGrid arr={activeCollection.images} />
+        {activeCollection.images.length === 0 ? (
+          <NoCollection
+            className={{
+              container: "my-5 flex-1 text-base font-medium",
+              icon: "size-5 sm:size-7",
+            }}
+            title="images"
+            icon="img"
+          />
+        ) : (
+          <ImageGrid arr={activeCollection.images} />
+        )}
       </main>
     );
 }

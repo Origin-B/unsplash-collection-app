@@ -4,6 +4,7 @@ import { useCollections } from "../../context/CollectionsProvider";
 // component
 import ActionBtn from "../shared/ActionBtn";
 import CollectionDetails from "./CollectionDetails";
+import NoCollection from "../shared/NoCollection";
 
 // icon
 import { DownArrow, Plus } from "../../icons/Icons";
@@ -52,6 +53,7 @@ export default function Details({
           </ActionBtn>
 
           <a
+            role="button"
             href={actImg.links.download}
             target="_blank"
             rel="noopener noreferrer"
@@ -64,20 +66,31 @@ export default function Details({
       </article>
 
       <div className="flex flex-1 flex-col gap-3">
-        <h2 className="text-text text-xl font-medium">Collections</h2>
+        <h2 className="text-text text-xl font-medium">Collections:</h2>
 
-        <div className="scrollbar-thumb-text-muted flex max-h-130 flex-1 flex-col gap-3 overflow-y-auto">
-          {collections
-            .filter((c) => c.images.some((img) => img.id === actImg.id))
-            .map((c) => (
-              <CollectionDetails
-                key={c.id}
-                collection={c}
-                actImg={actImg}
-                action="remove"
-              />
-            ))}
-        </div>
+        {collections.length === 0 ? (
+          <NoCollection
+            className={{
+              container: "my-5 flex-1 text-base font-medium",
+              icon: "size-5 sm:size-7",
+            }}
+            title="collection"
+            icon="collection"
+          />
+        ) : (
+          <div className="scrollbar-thumb-text-muted flex max-h-130 flex-1 flex-col gap-3 overflow-y-auto">
+            {collections
+              .filter((c) => c.images.some((img) => img.id === actImg.id))
+              .map((c) => (
+                <CollectionDetails
+                  key={c.id}
+                  collection={c}
+                  actImg={actImg}
+                  action="remove"
+                />
+              ))}
+          </div>
+        )}
       </div>
     </section>
   );
