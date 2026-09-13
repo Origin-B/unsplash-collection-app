@@ -33,7 +33,9 @@
 
 ## Overview
 
-![screenshot](./thumbnail.jpg)
+![mobile](./design/mobile.png)
+![tablet](./design/tablet.png)
+![desktop](./design/desktop.png)
 
 This is a photo search and collections app built on top of the **Unsplash API**. Users can search for high‑resolution photos, view details for any photo (photographer, publish date, download link), and organize favorite photos into custom collections that persist across sessions.
 
